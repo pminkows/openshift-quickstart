@@ -1,3 +1,0 @@
-spring.application.name: simple-consumer
-
-amqphub.amqp10jms.remoteUrl: ${ARTEMIS_URL}
