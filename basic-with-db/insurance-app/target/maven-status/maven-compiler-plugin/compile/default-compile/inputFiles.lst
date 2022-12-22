@@ -1,0 +1,9 @@
+/Users/pminkows/IdeaProjects/openshift-quickstart/basic-with-db/insurance-app/src/main/java/pl/redhat/samples/quarkus/insurance/model/InsuranceType.java
+/Users/pminkows/IdeaProjects/openshift-quickstart/basic-with-db/insurance-app/src/main/java/pl/redhat/samples/quarkus/insurance/model/InsuranceDetails.java
+/Users/pminkows/IdeaProjects/openshift-quickstart/basic-with-db/insurance-app/src/main/java/pl/redhat/samples/quarkus/insurance/resource/InsuranceResource.java
+/Users/pminkows/IdeaProjects/openshift-quickstart/basic-with-db/insurance-app/src/main/java/pl/redhat/samples/quarkus/insurance/client/message/Gender.java
+/Users/pminkows/IdeaProjects/openshift-quickstart/basic-with-db/insurance-app/src/main/java/pl/redhat/samples/quarkus/insurance/model/Insurance.java
+/Users/pminkows/IdeaProjects/openshift-quickstart/basic-with-db/insurance-app/src/main/java/pl/redhat/samples/quarkus/insurance/client/PersonService.java
+/Users/pminkows/IdeaProjects/openshift-quickstart/basic-with-db/insurance-app/src/main/java/pl/redhat/samples/quarkus/insurance/PersonApplication.java
+/Users/pminkows/IdeaProjects/openshift-quickstart/basic-with-db/insurance-app/src/main/java/pl/redhat/samples/quarkus/insurance/client/message/Person.java
+/Users/pminkows/IdeaProjects/openshift-quickstart/basic-with-db/insurance-app/src/main/java/pl/redhat/samples/quarkus/insurance/repository/InsuranceRepository.java

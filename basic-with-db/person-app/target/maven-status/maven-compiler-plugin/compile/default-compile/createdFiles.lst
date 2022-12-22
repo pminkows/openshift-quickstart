@@ -1,0 +1,6 @@
+pl/redhat/samples/quarkus/person/repository/PersonRepository.class
+pl/redhat/samples/quarkus/person/PersonApplication.class
+pl/redhat/samples/quarkus/person/model/Person.class
+pl/redhat/samples/quarkus/person/model/Gender.class
+META-INF/panache-archive.marker
+pl/redhat/samples/quarkus/person/resource/PersonResource.class

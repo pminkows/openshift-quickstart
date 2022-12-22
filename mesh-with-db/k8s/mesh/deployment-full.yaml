@@ -1,0 +1,177 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    sidecar.istio.io/inject: 'true'
+  name: quarkus-person-app-v1
+  labels:
+    app: quarkus-person-app
+    app.kubernetes.io/component: quarkus-person-app-v1
+    app.kubernetes.io/instance: quarkus-person-app-v1
+    app.kubernetes.io/name: quarkus-person-app-v1
+    app.kubernetes.io/part-of: quarkus-person-app
+    app.openshift.io/runtime: quarkus
+    app.openshift.io/runtime-namespace: demo-mesh
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-person-app
+  template:
+    metadata:
+      labels:
+        app: quarkus-person-app
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: 'true'
+    spec:
+      containers:
+        - name: quarkus-person-app-v1
+          image: quay.io/pminkows/quarkus-person-app:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: person-db
+                  key: database-name
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: person-db
+                  key: database-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: person-db
+                  key: database-password
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    sidecar.istio.io/inject: 'true'
+  name: quarkus-person-app-v2
+  labels:
+    app: quarkus-person-app
+    app.kubernetes.io/component: quarkus-person-app-v2
+    app.kubernetes.io/instance: quarkus-person-app-v2
+    app.kubernetes.io/name: quarkus-person-app-v2
+    app.kubernetes.io/part-of: quarkus-person-app
+    app.openshift.io/runtime: quarkus
+    app.openshift.io/runtime-namespace: demo-mesh
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-person-app
+  template:
+    metadata:
+      labels:
+        app: quarkus-person-app
+        version: v2
+      annotations:
+        sidecar.istio.io/inject: 'true'
+    spec:
+      containers:
+        - name: quarkus-person-app-v2
+          image: quay.io/pminkows/quarkus-person-app:v2
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: person-db
+                  key: database-name
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: person-db
+                  key: database-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: person-db
+                  key: database-password
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    sidecar.istio.io/inject: 'true'
+  name: quarkus-insurance-app
+  labels:
+    app: quarkus-insurance-app
+    app.kubernetes.io/component: quarkus-insurance-app
+    app.kubernetes.io/instance: quarkus-insurance-app
+    app.kubernetes.io/name: quarkus-insurance-app
+    app.kubernetes.io/part-of: quarkus-insurance-app
+    app.openshift.io/runtime: quarkus
+    app.openshift.io/runtime-namespace: demo-mesh
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-insurance-app
+  template:
+    metadata:
+      labels:
+        app: quarkus-insurance-app
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: 'true'
+    spec:
+      containers:
+        - name: quarkus-insurance-app
+          image: quay.io/pminkows/quarkus-insurance-app:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: insurance-db
+                  key: database-name
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: insurance-db
+                  key: database-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: insurance-db
+                  key: database-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quarkus-person-app
+  labels:
+    app: quarkus-person-app
+spec:
+  type: ClusterIP
+  selector:
+    app: quarkus-person-app
+  ports:
+    - port: 8080
+      name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quarkus-insurance-app
+  labels:
+    app: quarkus-insurance-app
+spec:
+  type: ClusterIP
+  selector:
+    app: quarkus-insurance-app
+  ports:
+    - port: 8080
+      name: http
